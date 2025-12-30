@@ -4,7 +4,7 @@ module display(
     input wire clk, reset,
     input wire up, down, left, right,
     output wire h_sync, v_sync,
-    output wire [2:0] rgb
+    output wire [11:0] rgb
 );
     
     // signal declaration

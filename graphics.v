@@ -6,7 +6,7 @@ module graphics(
     input wire [9:0] coord_x, coord_y,
     input wire active_area,
     
-    output reg [2:0] rgb
+    output reg [11:0] rgb
     );
 
     reg [1:0] gameMode;
@@ -37,10 +37,10 @@ module graphics(
     
     
     //localparam CIRCLE_COLOR     = 3'b101; // Magenta
-    localparam GRID_LINE_COLOR  = 3'b111; // White
-    localparam BOARD_BG_COLOR   = 3'b000; // Black
-    integer SNAKE_COLOR   = 3'b010; // Green
-    localparam APPLE_COLOR   = 3'b001; // Red
+    localparam GRID_LINE_COLOR  = 12'hFFF; // White
+    localparam BOARD_BG_COLOR   = 12'h000; // Black
+    localparam SNAKE_COLOR   = 12'h0F0; // Green
+    localparam APPLE_COLOR   = 12'hF00; // Red
     localparam SCREEN_BG_COLOR  = 3'b000; // Black (outside the board)
     
     reg [1:0] dir; // Right Left Up Down
@@ -232,9 +232,9 @@ module graphics(
                 rgb = BOARD_BG_COLOR;
         // Difficulty mode
         end else if (gameMode == 2'b00)begin // Loading Screen
-            rgb = {color[11],color[7],color[3]};
+            rgb = color;
         end else if (gameMode == 2'b10)begin
-            rgb = {gocolor[11],gocolor[7],gocolor[3]};
+            rgb = gocolor;
         end else begin
             rgb = SCREEN_BG_COLOR;
         end
