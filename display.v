@@ -13,8 +13,13 @@ module display(
     
     // assuming our main clk is 50MHz,
     // as its common between most of FPGA boards
-    reg clk_25;
+    reg clk_50;
     always @(posedge clk)
+    begin
+        clk_50 <= ~clk_50;
+    end
+    reg clk_25;
+    always @(posedge clk_50)
     begin
         clk_25 <= ~clk_25;
     end
